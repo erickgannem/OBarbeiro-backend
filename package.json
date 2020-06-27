@@ -5,7 +5,8 @@
   "author": "Erick Gannem",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "youch": "^2.0.10"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
