@@ -9,6 +9,9 @@
     "express": "^4.17.1",
     "youch": "^2.0.10"
   },
+  "scripts": {
+    "start": "node src/server.js"
+  },
   "devDependencies": {
     "nodemon": "^2.0.4"
   }
