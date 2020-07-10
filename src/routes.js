@@ -1,6 +1,6 @@
 import express from 'express';
 
-import ClientController from './app/controllers/ClientController.js';
+import UserController from './app/controllers/UserController.js';
 
 const { Router } = express;
 
