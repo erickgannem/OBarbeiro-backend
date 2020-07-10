@@ -1,6 +1,6 @@
 import express from 'express';
 
-import ClientController from "./app/controllers/ClientController.js";
+import ClientController from './app/controllers/ClientController.js';
 
 const { Router } = express;
 
@@ -15,6 +15,5 @@ routes.get('/api/services', (req, res) => res.status(200).json({ message: '/api/
 routes.get('/api/professionals', (req, res) => res.status(200).json({ message: '/api/professionals' }));
 
 routes.get('/api/availability', (req, res) => res.status(200).json({ message: '/api/availability' }));
-
 
 export default routes;
