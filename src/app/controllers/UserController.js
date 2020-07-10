@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/extensions
 import { User } from '../../database/connection.js';
 
 class UserController {
@@ -16,6 +17,7 @@ class UserController {
 
       return res.status(200).json(user);
     } catch (error) {
+      console.log(error);
       return res.status(400).json({ message: 'Error creating new user' });
     }
   }
