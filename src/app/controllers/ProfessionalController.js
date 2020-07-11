@@ -1,7 +1,14 @@
 import { Professional } from '../../database/connection.js';
 
 class ProfessionalController {
-  static async index(req, res) {}
+  static async index(req, res) {
+    try {
+      const professionals = await Professional.find({});
+      return res.status(200).json(professionals);
+    } catch (error) {
+      return res.status(400).json({ message: error });
+    }
+  }
 
   static async store(req, res) {
     try {
