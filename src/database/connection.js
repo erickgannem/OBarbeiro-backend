@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import User from './models/User.js';
+import Professional from './models/Professional.js';
+import Service from './models/Service.js';
 
 const environment = dotenv.config({ path: '.env.dev' });
 
@@ -17,4 +19,4 @@ async function dbConnect() {
   }
 }
 dbConnect();
-export { User };
+export { User, Professional, Service };
