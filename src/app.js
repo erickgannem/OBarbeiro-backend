@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable no-unused-vars */
 import express from 'express';
 import Youch from 'youch';
 import routes from './routes.js';

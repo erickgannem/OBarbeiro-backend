@@ -1,6 +1,5 @@
 import express from 'express';
 
-// eslint-disable-next-line import/extensions
 import UserController from './app/controllers/UserController.js';
 
 const { Router } = express;
