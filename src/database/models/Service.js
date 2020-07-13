@@ -9,7 +9,7 @@ const serviceSchema = new mongoose.Schema({
     ref: 'Professional',
     required: true,
   },
-});
+}, { timestamps: true });
 
 const Service = mongoose.model('Service', serviceSchema);
 

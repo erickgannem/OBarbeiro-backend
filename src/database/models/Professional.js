@@ -11,7 +11,7 @@ const professionalSchema = new mongoose.Schema({
     ref: 'Service',
     required: true,
   },
-});
+}, { timestamps: true });
 
 const Professional = mongoose.model('Professional', professionalSchema);
 

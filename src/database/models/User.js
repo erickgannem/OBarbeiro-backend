@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   phone: { type: Number, required: true },
   birth: { type: Date, required: true },
   isClient: { type: Boolean, required: true },
-});
+}, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
 
