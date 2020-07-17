@@ -4,9 +4,11 @@ class ProfessionalController {
   static async index(req, res) {
     try {
       const professionals = await Professional.find({});
+      if (!professionals.length) throw new Error('No professinals were found');
+
       return res.status(200).json(professionals);
-    } catch (error) {
-      return res.status(400).json({ message: error });
+    } catch (err) {
+      return res.status(400).json({ message: err.message });
     }
   }
 
@@ -14,8 +16,8 @@ class ProfessionalController {
     try {
       const professional = await Professional.create(req.body);
       return res.status(200).json(professional);
-    } catch (error) {
-      return res.status(400).json({ message: error });
+    } catch (err) {
+      return res.status(400).json({ message: err.message });
     }
   }
 }

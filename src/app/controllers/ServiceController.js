@@ -4,9 +4,11 @@ class ServiceController {
   static async index(req, res) {
     try {
       const services = await Service.find({});
+      if (!services.length) throw new Error('No services were found');
+
       return res.status(200).json(services);
-    } catch (error) {
-      return res.status(400).json({ message: error });
+    } catch (err) {
+      return res.status(400).json({ message: err.message });
     }
   }
 
