@@ -1,5 +1,6 @@
 import express from 'express';
 import Youch from 'youch';
+import cors from 'cors';
 import routes from './routes.js';
 
 class App {
@@ -16,6 +17,7 @@ class App {
   }
 
   middlewares() {
+    this.server.use(cors());
     this.server.use(express.json());
   }
 
