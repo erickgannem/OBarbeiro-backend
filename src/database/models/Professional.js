@@ -16,7 +16,7 @@ const professionalSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 professionalSchema.pre('validate', function photoUrlHandler(next) {
-  if (this.photoURL.length === 0) {
+  if (!this.photoURL || this.photoURL.length === 0) {
     this.photoURL = path.resolve('src', 'assets', 'images', 'profile-placeholder.png');
     return next();
   }
