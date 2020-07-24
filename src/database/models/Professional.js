@@ -7,11 +7,12 @@ const professionalSchema = new mongoose.Schema({
   email: { type: String, required: true },
   phone: { type: Number, required: true },
   photoURL: { type: String, required: true },
-  services: {
-    type: [mongoose.Schema.Types.ObjectId],
+  availability: [{ type: String, required: true }],
+  services: [{
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Service',
     required: true,
-  },
+  }],
 }, { timestamps: true });
 
 professionalSchema.pre('validate', function photoUrlHandler(next) {
