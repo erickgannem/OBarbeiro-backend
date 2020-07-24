@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import path from 'path';
 
 const professionalSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -12,6 +13,14 @@ const professionalSchema = new mongoose.Schema({
     required: true,
   },
 }, { timestamps: true });
+
+professionalSchema.pre('validate', function photoUrlHandler(next) {
+  if (this.photoURL.length === 0) {
+    this.photoURL = path.resolve('src', 'assets', 'images', 'profile-placeholder.png');
+    return next();
+  }
+  return next();
+});
 
 const Professional = mongoose.model('Professional', professionalSchema);
 
