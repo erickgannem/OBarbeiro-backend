@@ -6,6 +6,7 @@ import Professional from './models/Professional.js';
 import Service from './models/Service.js';
 
 const environment = dotenv.config({ path: '.env.dev' });
+const db = { User, Professional, Service };
 
 mongoose.Promise = Promise;
 
@@ -19,4 +20,5 @@ async function dbConnect() {
   }
 }
 dbConnect();
-export { User, Professional, Service };
+
+export default db;
