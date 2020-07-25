@@ -14,7 +14,7 @@ const { DB_USER, DB_NAME, DB_PASSWORD } = environment.parsed;
 
 async function dbConnect() {
   try {
-    await mongoose.connect(`mongodb://${DB_USER}:${DB_PASSWORD}@cluster0-shard-00-00.xr7bk.mongodb.net:27017,cluster0-shard-00-01.xr7bk.mongodb.net:27017,cluster0-shard-00-02.xr7bk.mongodb.net:27017/${DB_NAME}?ssl=true&replicaSet=atlas-nfsbib-shard-0&authSource=admin&retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(`mongodb://${DB_USER}:${DB_PASSWORD}@cluster0-shard-00-00.xr7bk.mongodb.net:27017,cluster0-shard-00-01.xr7bk.mongodb.net:27017,cluster0-shard-00-02.xr7bk.mongodb.net:27017/${DB_NAME}?ssl=true&replicaSet=atlas-nfsbib-shard-0&authSource=admin&retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
   } catch (error) {
     console.log(error);
   }

@@ -20,13 +20,6 @@ class ServiceController {
       return res.status(400).json({ error: err.message });
     }
   }
-
-  static async update(req, res) {
-    await db.Service.foundOneAndUpdate({ _id: req.params.service_id }, req.body);
-    const updatedService = await db.Service.findById(req.params.service_id);
-
-    return res.status(200).json(updatedService);
-  }
 }
 
 export default ServiceController;
