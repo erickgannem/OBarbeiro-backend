@@ -3,7 +3,12 @@ import db from '../../database/connection.js';
 class ProfessionalController {
   static async index(req, res) {
     try {
-      const professionals = await db.Professional.find({});
+      const query = await db.Professional.find({});
+
+      const promise = query.map((professional) => db.Professional.findById(professional._id).populate('services'));
+
+      const professionals = await Promise.all(promise);
+
       if (!professionals.length) throw new Error('No professionals were found');
 
       return res.status(200).json(professionals);
