@@ -15,6 +15,7 @@ routes.get('/api/professionals', ProfessionalController.index);
 routes.get('/api/professionals/:id', ProfessionalController.findOne);
 routes.post('/api/professionals', ProfessionalController.store);
 routes.post('/api/professionals/:professionalId', ProfessionalController.assignService);
+routes.put('/api/professionals/:professionalId', ProfessionalController.update);
 
 routes.get('/api/services', ServiceController.index);
 routes.get('/api/services/:serviceId', ServiceController.findOne);

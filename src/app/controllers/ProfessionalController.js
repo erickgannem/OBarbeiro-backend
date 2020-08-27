@@ -31,6 +31,16 @@ class ProfessionalController {
     }
   }
 
+  static async update(req, res) {
+    const { professionalId } = req.params;
+    try {
+      const updatedProfessional = await db.Professional.findByIdAndUpdate(professionalId, req.body);
+      return res.status(200).json(updatedProfessional);
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
+
   static async assignService(req, res) {
     const { professionalId } = req.params;
     const { serviceId } = req.query;
