@@ -12,6 +12,12 @@ class ServiceController {
     }
   }
 
+  static async findOne(req, res) {
+    const foundService = await db.Service.findById(req.params.serviceId).populate('professionals', 'name');
+
+    return res.status(200).json(foundService);
+  }
+
   static async store(req, res) {
     try {
       const service = await db.Service.create(req.body);

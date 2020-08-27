@@ -5,11 +5,11 @@ const serviceSchema = new mongoose.Schema({
   name: { type: String, required: true },
   cost: { type: Number, required: true },
   imgURL: { type: String, required: true },
-  professionals: {
-    type: [mongoose.Schema.Types.ObjectId],
+  professionals: [{
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Professional',
     required: true,
-  },
+  }],
 }, { timestamps: true });
 
 serviceSchema.pre('validate', function photoUrlHandler(next) {

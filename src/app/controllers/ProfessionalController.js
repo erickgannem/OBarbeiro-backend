@@ -12,6 +12,16 @@ class ProfessionalController {
     }
   }
 
+  static async findOne(req, res) {
+    try {
+      const foundProfessional = await db.Professional.findById(req.params.id).populate('services', 'name');
+
+      return res.status(200).json(foundProfessional);
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
+
   static async store(req, res) {
     try {
       const professional = await db.Professional.create(req.body);
