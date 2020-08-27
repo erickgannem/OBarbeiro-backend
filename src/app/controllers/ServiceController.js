@@ -20,6 +20,32 @@ class ServiceController {
       return res.status(400).json({ error: err.message });
     }
   }
+
+  static async assignProfessional(req, res) {
+    const { serviceId } = req.params;
+    const { professionalId } = req.query;
+
+    try {
+      const foundService = await db.Service.findById(serviceId);
+      const foundProfessional = await db.Professional.findById(professionalId);
+
+      const { services } = foundProfessional;
+      const { professionals } = foundService;
+
+      if (!services.includes(serviceId)) {
+        foundProfessional.services.push(serviceId);
+        await foundProfessional.save();
+      }
+      if (!professionals.includes(professionalId)) {
+        foundService.professionals.push(professionalId);
+        await foundService.save();
+      }
+
+      return res.status(200).json({ message: 'Operation succeded' });
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
 }
 
 export default ServiceController;

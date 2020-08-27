@@ -20,6 +20,32 @@ class ProfessionalController {
       return res.status(400).json({ error: err.message });
     }
   }
+
+  static async assignService(req, res) {
+    const { professionalId } = req.params;
+    const { serviceId } = req.query;
+
+    try {
+      const foundProfessional = await db.Professional.findById(professionalId);
+      const foundService = await db.Service.findById(serviceId);
+
+      const { services } = foundProfessional;
+      const { professionals } = foundService;
+
+      if (!services.includes(serviceId)) {
+        foundProfessional.services.push(serviceId);
+        await foundProfessional.save();
+      }
+      if (!professionals.includes(professionalId)) {
+        foundService.professionals.push(professionalId);
+        await foundService.save();
+      }
+
+      return res.status(200).json({ message: 'Operation succeded' });
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
 }
 
 export default ProfessionalController;
