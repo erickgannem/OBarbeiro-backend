@@ -1,12 +1,8 @@
-import mongoose, {Document, Schema} from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import path from 'path';
 
-interface IService extends Document {
-  name: string;
-  duration: number;
-  price: number;
-  imageUrl: string
-}
+import IService from '../interfaces/IService';
+
 const serviceSchema = new Schema({
   name: { type: String, required: true },
   duration: {type: Number, required: true},

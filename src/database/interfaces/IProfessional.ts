@@ -6,7 +6,7 @@ interface IProfessional extends Document {
   cpf: string;
   groups: Array<IGroup['_id']>
   email: string;
-  phoneNumber: string;
+  phone: string;
   schedule: string[];
   photoUrl: string;
 }

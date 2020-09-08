@@ -1,16 +1,5 @@
 import mongoose, {Schema, Document} from 'mongoose';
-
-interface IAppointment extends Document {
-  clientId: string;
-  services_booked: string[];
-  duration_expected: string;
-  services_provided: string[];
-  price_full: number,
-  discount: number,
-  price_total: number,
-  canceled: boolean,
-  cancellationReason: String
-}
+import IAppointment from '../interfaces/IAppointment';
 
 const appointmentSchema = new Schema({
   clientId: {
@@ -21,7 +10,7 @@ const appointmentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "ServiceBooked"
   }],
-  endTimeExpected: String,
+  durationExpected: Number,
   servicesProvided: [{
     type: Schema.Types.ObjectId,
     ref: 'ServiceProvided'

@@ -5,12 +5,12 @@ import IProfessional from '../interfaces/IProfessional';
 
 const professionalSchema = new Schema({
   name: { type: String, required: true },
-  cpf: { type: String, required: true },
+  cpf: { type: String, required: true, unique: true },
   groups: [{type: Schema.Types.ObjectId, ref: 'Group'}],
-  email: { type: String, required: true },
-  phone: { type: Number, required: true },
+  email: { type: String, required: true, unique: true },
+  phone: { type: String, required: true },
   schedule: [{ type: String, required: true }],
-  photoUrl: { type: String, required: true },
+  photoUrl: { type: String },
 }, { timestamps: true });
 
 professionalSchema.pre<IProfessional>('validate', function photoUrlHandler(next) {

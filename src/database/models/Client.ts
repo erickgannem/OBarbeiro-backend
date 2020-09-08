@@ -1,12 +1,15 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
+
+import IClient from '../interfaces/IClient';
 
 const clientSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  surname: { type: String, required: true },
-  email: { type: String, required: true },
-  phone: { type: Number, required: true },
+  cpf: {type: String, required: true, unique: true},
+  email: { type: String, required: true, unique: true },
+  phone: { type: String, required: true, unique: true },
+  appointments: [{type: Schema.Types.ObjectId, ref: 'Appointment'}]
 }, { timestamps: true });
 
-const Client = mongoose.model('Client', clientSchema);
+const Client = mongoose.model<IClient>('Client', clientSchema);
 
 export default Client;
