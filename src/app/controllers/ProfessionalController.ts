@@ -1,7 +1,8 @@
 import db from '../../database/connection.js';
+import { Request, Response } from 'express';
 
 class ProfessionalController {
-  static async index(req, res) {
+  static async index(req: Request, res: Response) {
     try {
       const query = await db.Professional.find({});
 
@@ -17,7 +18,7 @@ class ProfessionalController {
     }
   }
 
-  static async findOne(req, res) {
+  static async findOne(req: Request, res: Response) {
     try {
       const foundProfessional = await db.Professional.findById(req.params.id).populate('services', 'name');
 
@@ -27,7 +28,7 @@ class ProfessionalController {
     }
   }
 
-  static async store(req, res) {
+  static async store(req: Request, res: Response) {
     try {
       const professional = await db.Professional.create(req.body);
       return res.status(200).json(professional);
@@ -36,7 +37,7 @@ class ProfessionalController {
     }
   }
 
-  static async update(req, res) {
+  static async update(req: Request, res: Response) {
     const { professionalId } = req.params;
     try {
       const updatedProfessional = await db.Professional.findByIdAndUpdate(professionalId, req.body);
@@ -46,7 +47,7 @@ class ProfessionalController {
     }
   }
 
-  static async assignService(req, res) {
+  static async assignService(req: Request, res: Response) {
     const { professionalId } = req.params;
     const { serviceId } = req.query;
 

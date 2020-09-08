@@ -1,4 +1,4 @@
-import db from '../../database/connection.js';
+import db from '../../database/connection';
 
 class UserController {
   static async index(req, res) {

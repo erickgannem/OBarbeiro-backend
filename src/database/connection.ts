@@ -1,16 +1,16 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-import User from './models/User.js';
+import Client from './models/Client.js';
 import Professional from './models/Professional.js';
 import Service from './models/Service.js';
 
-const environment = dotenv.config({ path: '.env.dev' });
-const db = { User, Professional, Service };
+dotenv.config({ path: '.env.dev' });
+const db = { Client, Professional, Service };
 
 mongoose.Promise = Promise;
 
-const { DB_USER, DB_NAME, DB_PASSWORD } = environment.parsed;
+const { DB_USER , DB_NAME, DB_PASSWORD } = process.env;
 
 async function dbConnect() {
   try {

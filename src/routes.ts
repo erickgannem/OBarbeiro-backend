@@ -1,12 +1,10 @@
 import express from 'express';
 
-import UserController from './app/controllers/UserController.js';
-import ProfessionalController from './app/controllers/ProfessionalController.js';
-import ServiceController from './app/controllers/ServiceController.js';
+import UserController from './app/controllers/UserController';
+import ProfessionalController from './app/controllers/ProfessionalController';
+import ServiceController from './app/controllers/ServiceController';
 
-const { Router } = express;
-
-const routes = new Router();
+const routes = express.Router();
 
 routes.get('/api/users', UserController.index);
 routes.post('/api/users', UserController.store);
